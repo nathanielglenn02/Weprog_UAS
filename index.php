@@ -32,24 +32,24 @@ $arrHape = array(
     <title>Toko Hape</title>
     <link rel="stylesheet" href="index.css">
     <script>
-    function updateCheckboxes() {
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
-        const compareBtn = document.getElementById('compareBtn');
+        function updateCheckboxes() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const compareBtn = document.getElementById('compareBtn');
 
-        compareBtn.disabled = checked !== 3;
-        if (checked !== 3) {
-            compareBtn.style.backgroundColor = '#cccccc';
-            compareBtn.style.cursor = 'not-allowed';
-        } else {
-            compareBtn.style.backgroundColor = '#02343F';
-            compareBtn.style.cursor = 'pointer';
+            compareBtn.disabled = checked !== 3;
+            if (checked !== 3) {
+                compareBtn.style.backgroundColor = '#cccccc';
+                compareBtn.style.cursor = 'not-allowed';
+            } else {
+                compareBtn.style.backgroundColor = '#02343F';
+                compareBtn.style.cursor = 'pointer';
+            }
+
+            checkboxes.forEach(cb => {
+                if (!cb.checked) cb.disabled = checked >= 3;
+            });
         }
-
-        checkboxes.forEach(cb => {
-            if (!cb.checked) cb.disabled = checked >= 3;
-        });
-    }
     </script>
 </head>
 
@@ -72,8 +72,7 @@ $arrHape = array(
                 }
                 ?>
                 <div class="btn">
-                    <button id="compareBtn" class="compare-btn" onclick="location.href='compare.php'"
-                        disabled>Compare</button>
+                    <button id="compareBtn" class="compare-btn" onclick="location.href='compare.php'" disabled>Compare</button>
                 </div>
             </form>
         </div>
