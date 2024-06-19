@@ -33,7 +33,7 @@
         }
         .sidebar {
             width: 250px;
-            background-color: #f8f8f8;
+            background-color: #87CEEB;
             padding: 20px;
             box-sizing: border-box;
             position: fixed;
@@ -126,8 +126,8 @@
 </head>
 <body>
     <div class="sidebar">
-        <img src="logo.png" alt="Logo Toko" style="width:100%;">
-        <h2>Nama Toko</h2>
+        <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#87CEEB">
+        <h2 style="text-align:center;">Dogon Arena</h2>
     </div>
     <div class="content">
         <form action="compare.php" method="POST">
