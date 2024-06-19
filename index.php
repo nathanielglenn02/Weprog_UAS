@@ -97,11 +97,11 @@
         display: block;
         border-radius: 5px;
         clear: both;
-    }
-    .compare-btn:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-    }
+        }
+        .compare-btn:disabled {
+                background-color: #cccccc;
+                cursor: not-allowed;
+        }
     </style>
     <script>
         function updateCheckboxes() {
@@ -130,7 +130,7 @@
         <h2>Nama Toko</h2>
     </div>
     <div class="content">
-        <form action="compare1.php" method="POST">
+        <form action="compare.php" method="POST">
         <?php
         foreach ($arrHape as $hape) {
             echo '<div class="card">';
@@ -142,7 +142,7 @@
         }
         ?>
         <div class="btn">
-            <button id="compareBtn" class = "compare-btn" onclick="location.href='compare1.php'" disabled>Compare</button>
+            <button id="compareBtn" class = "compare-btn" onclick="location.href='compare.php'" disabled>Compare</button>
         </div>
         </form>
     </div>
