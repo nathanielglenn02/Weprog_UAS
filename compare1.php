@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 $arrHape = array(
     array("SKU" => "12345", "Merk" => "Samsung", "Model" => "Galaxy S22", "Harga" => 18000000, "url_gambar" => "https://picsum.photos/seed/pic1/175/100", "spec" => array("4GB", "5G", "5150mAH", "256GB")),
     array("SKU" => "54321", "Merk" => "Xiaomi", "Model" => "Mi 11 Pro", "Harga" => 9500000, "url_gambar" => "https://picsum.photos/seed/pic2/175/100", "spec" => array("8GB", "5G", "5050mAH", "256GB")),
@@ -24,126 +22,88 @@ $arrHape = array(
     array("SKU" => "IJ123", "Merk" => "Alcatel", "Model" => "Alcatel 5V", "Harga" => 3500000, "url_gambar" => "https://picsum.photos/seed/pic20/175/100", "spec" => array("3GB", "4G", "4000mAH", "32GB"))
 );
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $_SESSION['selectedHape'] = isset($_POST['hape']) ? $_POST['hape'] : array();
-    if (count($_SESSION['selectedHape']) == 3) {
-        header('Location: compare.php?hape[]=' . implode('&hape[]=', $_SESSION['selectedHape']));
-        exit;
-    }
-}
-
-$selectedHape = isset($_SESSION['selectedHape']) ? $_SESSION['selectedHape'] : array();
+$selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
+print_r($selectedHape);
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Toko Hape</title>
+    <title>Perbandingan Hape</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-
-    .left {
-        width: 250px;
-        background-color: #f8f8f8;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        float: left;
-        height: 100vh;
-        position: fixed;
-    }
-
-    .left img {
-        max-width: 100px;
-    }
-
-    .right {
-        margin-left: 250px;
-        padding: 20px;
-        display: block;
-    }
-
-    .card {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        width: calc(25% - 20px);
-        margin: 10px;
-        float: left;
-        box-sizing: border-box;
-    }
-
-    .card img {
-        width: 100%;
-        height: auto;
-    }
-
-    .card h2 {
-        margin: 0;
-        padding: 15px;
-        font-size: 18px;
-        background-color: #f0f0f0;
-        text-align: center;
-        width: 100%;
-    }
-
-    .card p {
-        padding: 0 15px 15px;
-        font-size: 16px;
-        color: #333;
-        text-align: center;
-    }
-
-    .card input {
-        margin: 0 auto 15px;
-        display: block;
-    }
-
-    .compare-btn {
-        background-color: #28a745;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        margin: 20px auto;
-        display: block;
-        border-radius: 5px;
-        clear: both;
-    }
-
-    .compare-btn:disabled {
-        background-color: #aaa;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .comparison-table {
+            width: 100%;
+            max-width: 800px;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .comparison-table,
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: center;
+        }
+        .comparison-table th {
+            background-color: #f4f4f4;
+        }
     </style>
 </head>
-
 <body>
-    <div class="left">
-        <img src="logo.png" alt="Logo Toko">
-        <h1>Nama Toko</h1>
-    </div>
-    <div class="right">
-        <form method="POST">
-            <?php foreach ($arrHape as $index => $hape) : ?>
-            <div class="card">
-                <img src="<?= $hape['url_gambar'] ?>" alt="<?= $hape['Model'] ?>">
-                <h2><?= $hape['Merk'] ?> <?= $hape['Model'] ?></h2>
-                <p>Harga: Rp <?= number_format($hape['Harga'], 0, ',', '.') ?></p>
-                <input type="checkbox" name="hape[]" value="<?= $index ?>"
-                    <?= count($selectedHape) == 3 && !in_array($index, $selectedHape) ? 'disabled' : '' ?>
-                    <?= in_array($index, $selectedHape) ? 'checked' : '' ?> onchange="this.form.submit()">
-            </div>
-            <?php endforeach; ?>
-            <button type="submit" class="compare-btn"
-                <?= count($selectedHape) != 3 ? 'disabled' : '' ?>>Bandingkan</button>
-        </form>
-    </div>
-</body>
+    <h1>Perbandingan Hape</h1>
+    <table class="comparison-table">
+        <tr>
+            <th>Gambar</th>
+            <th>Merk & Model</th>
+            <th>Harga</th>
+            <th>Spesifikasi</th>
+        </tr>
+        <!-- <?php foreach ($selectedHape as $index) : ?>
+        <?php $hape = $arrHape[$index]; ?>
 
+        <tr>
+            <td><img src="<?= $hape['url_gambar'] ?>" alt="<?= $hape['Model'] ?>" width="175"></td>
+            <td><?= $hape['Merk'] ?> <?= $hape['Model'] ?></td>
+            <td>Rp <?= number_format($hape['Harga'], 0, ',', '.') ?></td>
+            <td>
+                <ul style="list-style-type: none; padding: 0;">
+                    <?php foreach ($hape['spec'] as $spec) : ?>
+                    <li><?= $spec ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </table> -->
+    <?php foreach ($selectedHape as $sku) : ?>
+        <?php foreach ($arrHape as $hape) : ?>
+        <?php if ($hape['SKU'] == $sku) : ?>
+        <tr>
+            <td><img src="<?= $hape['url_gambar'] ?>" alt="<?= $hape['Model'] ?>" width="175"></td>
+            <td><?= $hape['Merk'] ?> <?= $hape['Model'] ?></td>
+            <td>Rp <?= number_format($hape['Harga'], 0, ',', '.') ?></td>
+            <td>
+                <ul style="list-style-type: none; padding: 0;">
+                    <?php foreach ($hape['spec'] as $spec) : ?>
+                    <li><?= $spec ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </td>
+        </tr>
+        <?php endif; ?>
+        <?php endforeach; ?>
+        <?php endforeach; ?>
+    </table>
+    
+</body>
 </html>
