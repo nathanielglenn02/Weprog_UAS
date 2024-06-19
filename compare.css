@@ -11,6 +11,7 @@ body {
 .sidebar {
     width: 250px;
     background-color: #02343F;
+    padding: 20px;
     box-sizing: border-box;
     position: fixed;
     height: 100vh;
