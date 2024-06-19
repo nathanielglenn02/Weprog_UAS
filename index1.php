@@ -32,21 +32,20 @@
             display: flex;
         }
         .sidebar {
-            width: 15%;
+            width: 250px;
             background-color: #f8f8f8;
             padding: 20px;
             box-sizing: border-box;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
         }
 
-        .fixed{
-            position: fixed;
-        }
-        
         .content {
-            flex-grow: 1;
+            margin-left: 250px;
             padding: 20px;
             box-sizing: border-box;
-            width: 85%;
+            flex-grow: 1; 
         }
         
         .card {
@@ -102,7 +101,7 @@
     .compare-btn:disabled {
             background-color: #cccccc;
             cursor: not-allowed;
-        }
+    }
     </style>
     <script>
         function updateCheckboxes() {
@@ -127,10 +126,8 @@
 </head>
 <body>
     <div class="sidebar">
-        <div class="fixed">
-            <img src="logo.png" alt="Logo Toko" style="width:100%;">
-            <h2>Nama Toko</h2>
-        </div>
+        <img src="logo.png" alt="Logo Toko" style="width:100%;">
+        <h2>Nama Toko</h2>
     </div>
     <div class="content">
         <form action="compare1.php" method="POST">
