@@ -27,7 +27,10 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perbandingan Hape</title>
     <style>
         body {
@@ -38,7 +41,6 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
         .sidebar {
             width: 250px;
             background-color: #02343F;
-            padding: 20px;
             box-sizing: border-box;
             position: fixed;
             height: 100vh;
@@ -116,31 +118,35 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
         }
     </style>
 </head>
+
 <body>
+    <div class="container">
         <div class="sidebar">
             <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#02343F">
             <h2 style="text-align:center; ">Dogon Arena</h2>  
         </div>
         <div class="content">
             <form action="index.php" method="POST">
-                <?php foreach ($selectedHape as $sku) : ?>
-                    <?php foreach ($arrHape as $hape) : ?>
-                        <?php if ($hape['SKU'] == $sku) : ?>
-                            <div class="card">
-                                <img src="<?= $hape['url_gambar'] ?>" alt="<?= $hape['Model'] ?>">
-                                <h3><?= $hape['Merk'] ?> <?= $hape['Model'] ?></h3>
-                                <p>Rp <?= number_format($hape['Harga']) ?></p>
-                                <?php foreach ($hape['spec'] as $spec) : ?>
-                                        <p><?= $spec ?></p>
-                                <?php endforeach; ?>  
-                            </div>
-                        <?php endif; ?>
+            <?php foreach ($selectedHape as $sku) : ?>
+                <?php foreach ($arrHape as $hape) : ?>
+                <?php if ($hape['SKU'] == $sku) : ?>
+                <div class="card">
+                    <img src="<?= $hape['url_gambar'] ?>" alt="<?= $hape['Model'] ?>">
+                    <h3><?= $hape['Merk'] ?> <?= $hape['Model'] ?></h3>
+                    <p>Rp <?= number_format($hape['Harga']) ?></p>
+                    <?php foreach ($hape['spec'] as $spec) : ?>
+                    <p><?= $spec ?></p>
                     <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
                 <?php endforeach; ?>
-            <div class="btn">
-                <button id="backBtn" class = "back-btn">Back</button>
-            </div>
+                <?php endforeach; ?>
+                <div class="btn">
+                    <button id="backBtn" class="back-btn">Back</button>
+                </div>
             </form>
         </div>
+    </div>
 </body>
+
 </html>
