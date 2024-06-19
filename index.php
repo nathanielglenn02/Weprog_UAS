@@ -25,76 +25,82 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Toko Hape</title>
     <style>
-        body {
-            display: flex;
-            height: 100vh;
-            margin: 0;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #02343F;
-            padding: 20px;
-            box-sizing: border-box;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-        }
+    body {
+        display: flex;
+        height: 100vh;
+        margin: 0;
+    }
 
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-            background-color: #F0EDCC;
-            box-sizing: border-box;
-            flex-grow: 1; 
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start; 
-            overflow: auto;
-        }
-        
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: 370px;
-            background-color: #FFF;
-            height: 470px;
-            margin: 10px;
-            float: left;
-            box-sizing: border-box;
-        }
+    .container {
+        background: #fff;
+    }
 
-        .card img {
-            width: 80%;
-            height: auto;
-        }
+    .sidebar {
+        width: 250px;
+        background-color: #02343F;
+        padding: 20px;
+        box-sizing: border-box;
+        position: fixed;
+        height: 100vh;
+        overflow-y: auto;
+    }
 
-        .card h3 {
-            margin: 0;
-            padding: 0;
-            font-size: 18px;
-            background-color: #f0f0f0;
-            text-align: center;
-            width: 100%;
-        }
+    .content {
+        margin-left: 250px;
+        padding: 20px;
+        background-color: #F0EDCC;
+        box-sizing: border-box;
+        flex-grow: 1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        overflow: auto;
+    }
 
-        .card p {
-            padding: 0 5px 0;
-            font-size: 16px;
-            color: #333;
-            text-align: center;
-        }
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 370px;
+        background-color: #FFF;
+        height: 470px;
+        margin: 10px;
+        float: left;
+        box-sizing: border-box;
+    }
 
-        .card input {
-            margin: 0 auto 15px;
-            display: block;
-        }
+    .card img {
+        width: 80%;
+        height: auto;
+    }
 
-        .compare-btn {
+    .card h3 {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        background-color: #f0f0f0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .card p {
+        padding: 0 5px 0;
+        font-size: 16px;
+        color: #333;
+        text-align: center;
+    }
+
+    .card input {
+        margin: 0 auto 15px;
+        display: block;
+    }
+
+    .compare-btn {
         background-color: #28a745;
         color: white;
         border: none;
@@ -105,54 +111,60 @@
         display: block;
         border-radius: 5px;
         clear: both;
-        }
-        .compare-btn:disabled {
-                background-color: #cccccc;
-                cursor: not-allowed;
-        }
+    }
+
+    .compare-btn:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
     </style>
     <script>
-        function updateCheckboxes() {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
-            const compareBtn = document.getElementById('compareBtn');
-            
-            compareBtn.disabled = checked !== 3;
-            if (checked !== 3) {
-                compareBtn.style.backgroundColor = '#cccccc';
-                compareBtn.style.cursor = 'not-allowed';
-            } else {
-                compareBtn.style.backgroundColor = '#02343F';
-                compareBtn.style.cursor = 'pointer';
-            }
-            
-            checkboxes.forEach(cb => {
-                if (!cb.checked) cb.disabled = checked >= 3;
-            });
+    function updateCheckboxes() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+        const compareBtn = document.getElementById('compareBtn');
+
+        compareBtn.disabled = checked !== 3;
+        if (checked !== 3) {
+            compareBtn.style.backgroundColor = '#cccccc';
+            compareBtn.style.cursor = 'not-allowed';
+        } else {
+            compareBtn.style.backgroundColor = '#02343F';
+            compareBtn.style.cursor = 'pointer';
         }
+
+        checkboxes.forEach(cb => {
+            if (!cb.checked) cb.disabled = checked >= 3;
+        });
+    }
     </script>
 </head>
+
 <body>
-    <div class="sidebar">
-        <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#02343F">
-        <h2 style="text-align:center; color: white; font-weight:bold;">Dogon Arena</h2>
-    </div>
-    <div class="content">
-        <form action="compare.php" method="POST">
-        <?php
-        foreach ($arrHape as $hape) {
-            echo '<div class="card">';
-            echo '<img src="'.$hape["url_gambar"].'" alt="'.$hape["Model"].'" style="width:100%;">';
-            echo '<h3>'.$hape["Merk"].' '.$hape["Model"].'</h3>';
-            echo '<p>Harga: Rp'.number_format($hape["Harga"]).'</p>';
-            echo '<input type="checkbox" name="compare[]" value="'.$hape["SKU"].'" onchange="updateCheckboxes()">';
-            echo '</div>';
-        }
-        ?>
-        <div class="btn">
-            <button id="compareBtn" class = "compare-btn" onclick="location.href='compare.php'" disabled>Compare</button>
+    <div class="container">
+        <div class="sidebar">
+            <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#02343F">
+            <h2 style="text-align:center; color: white; font-weight:bold;">Dogon Arena</h2>
         </div>
-        </form>
+        <div class="content">
+            <form action="compare.php" method="POST">
+                <?php
+            foreach ($arrHape as $hape) {
+                echo '<div class="card">';
+                echo '<img src="'.$hape["url_gambar"].'" alt="'.$hape["Model"].'" style="width:100%;">';
+                echo '<h3>'.$hape["Merk"].' '.$hape["Model"].'</h3>';
+                echo '<p>Harga: Rp'.number_format($hape["Harga"]).'</p>';
+                echo '<input type="checkbox" name="compare[]" value="'.$hape["SKU"].'" onchange="updateCheckboxes()">';
+                echo '</div>';
+            }
+            ?>
+                <div class="btn">
+                    <button id="compareBtn" class="compare-btn" onclick="location.href='compare.php'"
+                        disabled>Compare</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
+
 </html>
