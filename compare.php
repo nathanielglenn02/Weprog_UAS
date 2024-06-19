@@ -46,6 +46,7 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
         .content {
             margin-left: 250px;
             padding: 20px;
+            width: 100%;
             background-color: #F0EDCC;
             box-sizing: border-box;
             flex-grow: 1; 
@@ -60,6 +61,7 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
             height: 590px;
             margin: 10px;
             float: left;
+            background-color: #FFF;
             box-sizing: border-box;
         }
 
@@ -96,7 +98,7 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
             clear: both;
         }
         .back-btn:hover{
-            background-color: #28a745;
+            background-color: #02343F;
             color: white;
             border: none;
             padding: 10px 20px;
