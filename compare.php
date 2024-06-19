@@ -38,6 +38,7 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
         .sidebar {
             width: 250px;
             background-color: #02343F;
+            padding: 20px;
             box-sizing: border-box;
             position: fixed;
             height: 100vh;
@@ -118,7 +119,7 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
 <body>
         <div class="sidebar">
             <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#02343F">
-            <h2 style="text-align:center; color: white; font-weight:bold;">Dogon Arena</h2>  
+            <h2 style="text-align:center; ">Dogon Arena</h2>  
         </div>
         <div class="content">
             <form action="index.php" method="POST">
