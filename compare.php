@@ -32,14 +32,98 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perbandingan Hape</title>
-    <link rel="stylesheet" href="compare.css">
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #02343F;
+            box-sizing: border-box;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .content {
+            margin-left: 250px;
+            width: 100%;
+            background-color: #F0EDCC;
+            box-sizing: border-box;
+            flex-grow: 1; 
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start; 
+            overflow: auto;
+        }
+        
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 370px;
+            height: 590px;
+            margin: 10px;
+            float: left;
+            background-color: #FFF;
+            box-sizing: border-box;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            background-color: #f0f0f0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .card p {
+            padding: 0 5px 0;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+        }
+        .back-btn {
+            background-color: #cccccc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            border-radius: 5px;
+            clear: both;
+        }
+        .back-btn:hover{
+            background-color: #02343F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            border-radius: 5px;
+            clear: both;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <div class="sidebar">
             <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#02343F">
-            <h2 style="text-align:center; color: white; font-weight:bold;">Dogon Arena</h2>
+            <h2 style="text-align:center; ">Dogon Arena</h2>  
         </div>
         <div class="content">
             <form action="index.php" method="POST">
