@@ -30,6 +30,8 @@
     <style>
         body {
             display: flex;
+            height: 100vh;
+            margin: 0;
         }
         .sidebar {
             width: 250px;
@@ -47,6 +49,10 @@
             background-color: #F0EDCC;
             box-sizing: border-box;
             flex-grow: 1; 
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start; 
+            overflow: auto;
         }
         
         .card {
@@ -129,7 +135,7 @@
 <body>
     <div class="sidebar">
         <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#02343F">
-        <h2 style="text-align:center;">Dogon Arena</h2>
+        <h2 style="text-align:center; color: white; font-weight:bold;">Dogon Arena</h2>
     </div>
     <div class="content">
         <form action="compare.php" method="POST">

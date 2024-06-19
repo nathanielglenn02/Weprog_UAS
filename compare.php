@@ -32,11 +32,12 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
     <style>
         body {
             display: flex;
+            height: 100vh;
+            margin: 0;
         }
         .sidebar {
             width: 250px;
             background-color: #02343F;
-            padding: 20px;
             box-sizing: border-box;
             position: fixed;
             height: 100vh;
@@ -45,11 +46,14 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
 
         .content {
             margin-left: 250px;
-            padding: 20px;
             width: 100%;
             background-color: #F0EDCC;
             box-sizing: border-box;
             flex-grow: 1; 
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start; 
+            overflow: auto;
         }
         
         .card {
@@ -114,7 +118,7 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
 <body>
         <div class="sidebar">
             <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#02343F">
-            <h2 style="text-align:center;">Dogon Arena</h2>  
+            <h2 style="text-align:center; color: white; font-weight:bold;">Dogon Arena</h2>  
         </div>
         <div class="content">
             <form action="index.php" method="POST">
