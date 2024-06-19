@@ -33,7 +33,7 @@
         }
         .sidebar {
             width: 250px;
-            background-color: #87CEEB;
+            background-color: #02343F;
             padding: 20px;
             box-sizing: border-box;
             position: fixed;
@@ -44,6 +44,7 @@
         .content {
             margin-left: 250px;
             padding: 20px;
+            background-color: #F0EDCC;
             box-sizing: border-box;
             flex-grow: 1; 
         }
@@ -54,6 +55,7 @@
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             width: 370px;
+            background-color: #FFF;
             height: 470px;
             margin: 10px;
             float: left;
@@ -114,7 +116,7 @@
                 compareBtn.style.backgroundColor = '#cccccc';
                 compareBtn.style.cursor = 'not-allowed';
             } else {
-                compareBtn.style.backgroundColor = '';
+                compareBtn.style.backgroundColor = '#02343F';
                 compareBtn.style.cursor = 'pointer';
             }
             
@@ -126,7 +128,7 @@
 </head>
 <body>
     <div class="sidebar">
-        <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#87CEEB">
+        <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#02343F">
         <h2 style="text-align:center;">Dogon Arena</h2>
     </div>
     <div class="content">

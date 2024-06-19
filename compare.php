@@ -35,7 +35,7 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
         }
         .sidebar {
             width: 250px;
-            background-color: #87CEEB;
+            background-color: #02343F;
             padding: 20px;
             box-sizing: border-box;
             position: fixed;
@@ -46,6 +46,7 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
         .content {
             margin-left: 250px;
             padding: 20px;
+            background-color: #F0EDCC;
             box-sizing: border-box;
             flex-grow: 1; 
         }
@@ -110,7 +111,7 @@ $selectedHape = isset($_POST['compare']) ? $_POST['compare'] : array();
 </head>
 <body>
         <div class="sidebar">
-            <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#87CEEB">
+            <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#02343F">
             <h2 style="text-align:center;">Dogon Arena</h2>  
         </div>
         <div class="content">
