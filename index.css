@@ -6,6 +6,8 @@ body {
 
 .container {
     background: #fff;
+    display: flex;
+    flex-grow: 1;   
 }
 
 .sidebar {
@@ -16,6 +18,12 @@ body {
     position: fixed;
     height: 100vh;
     overflow-y: auto;
+}
+
+.sidebar h2{
+    text-align:center; 
+    color: white; 
+    font-weight: bold;
 }
 
 .content {

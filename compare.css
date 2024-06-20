@@ -5,7 +5,9 @@ body {
 }
 
 .container {
-    background: #fff;
+    background: #F0EDCC;
+    display: flex;
+    flex-grow: 1;
 }
 
 .sidebar {
@@ -17,16 +19,21 @@ body {
     height: 100vh;
     overflow-y: auto;
 }
+.sidebar h2{
+    text-align:center; 
+    color: white;
+    font-weight: bold;
+}
 
 .content {
     margin-left: 250px;
-    width: 100%;
     background-color: #F0EDCC;
     box-sizing: border-box;
     flex-grow: 1;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     overflow: auto;
 }
 
