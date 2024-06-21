@@ -29,7 +29,7 @@ $arrHape = array(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Hape</title>
+    <title>DOGON ARENA</title>
     <link rel="stylesheet" href="index.css">
     <script>
         function updateCheckboxes() {
