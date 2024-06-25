@@ -29,14 +29,14 @@ $arrHape = array(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Hape</title>
-    <link rel="stylesheet/css" href = "index.css">
+    <title>DOGON ARENA</title>
+    <link rel="stylesheet" href = "index.css">
 </head>
 
 <body>
     <div class="container">
         <div class="sidebar">
-            <img src="assets\LOGO.png" alt="Logo Toko">
+            <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#02343F">
             <h2>Dogon Arena</h2>
         </div>
         <div class="content">
