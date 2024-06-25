@@ -29,8 +29,34 @@ $arrHape = array(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOGON ARENA</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Toko Hape</title>
+    <link rel="stylesheet/css" href = "index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img src="assets\LOGO.png" alt="Logo Toko">
+            <h2>Dogon Arena</h2>
+        </div>
+        <div class="content">
+            <form action="compare.php" method="POST">
+                <?php
+                foreach ($arrHape as $hape) {
+                    echo '<div class="card">';
+                    echo '<img src="' . $hape["url_gambar"] . '" alt="' . $hape["Model"] . '" style="width:100%;">';
+                    echo '<h3>' . $hape["Merk"] . ' ' . $hape["Model"] . '</h3>';
+                    echo '<p>Harga: Rp' . number_format($hape["Harga"]) . '</p>';
+                    echo '<input type="checkbox" name="compare[]" value="' . $hape["SKU"] . '" onchange="updateCheckboxes()">';
+                    echo '</div>';
+                }
+                ?>
+                <div class="btn">
+                    <button id="compareBtn" class="compare-btn" onclick="location.href='compare.php'" disabled>Compare</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <script>
         function updateCheckboxes() {
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -51,32 +77,6 @@ $arrHape = array(
             });
         }
     </script>
-</head>
-
-<body>
-    <div class="container">
-        <div class="sidebar">
-            <img src="assets\LOGO.png" alt="Logo Toko" style="width:100%;background-color:#02343F">
-            <h2 style="text-align:center; color: white; font-weight:bold;">Dogon Arena</h2>
-        </div>
-        <div class="content">
-            <form action="compare.php" method="POST">
-                <?php
-                foreach ($arrHape as $hape) {
-                    echo '<div class="card">';
-                    echo '<img src="' . $hape["url_gambar"] . '" alt="' . $hape["Model"] . '" style="width:100%;">';
-                    echo '<h3>' . $hape["Merk"] . ' ' . $hape["Model"] . '</h3>';
-                    echo '<p>Harga: Rp' . number_format($hape["Harga"]) . '</p>';
-                    echo '<input type="checkbox" name="compare[]" value="' . $hape["SKU"] . '" onchange="updateCheckboxes()">';
-                    echo '</div>';
-                }
-                ?>
-                <div class="btn">
-                    <button id="compareBtn" class="compare-btn" onclick="location.href='compare.php'" disabled>Compare</button>
-                </div>
-            </form>
-        </div>
-    </div>
 </body>
 
 </html>
